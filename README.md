@@ -485,7 +485,8 @@ module "app_connector_gcp" {
 
 </details>
 
-<!-- BEGIN_TF_DOCS -->## Requirements
+<!-- BEGIN_TF_DOCS -->
+## Requirements
 
 | Name | Version |
 |------|---------|
