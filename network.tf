@@ -1,6 +1,6 @@
 
 # Custom firewall rules on management network
-resource "google_compute_firewall" "allow_ssh_https" {
+resource "google_compute_firewall" "allow_mgmt_ports" {
   count   = var.create_firewall_rule ? 1 : 0
   name    = var.mgmt_firewall_rule_name
   network = var.mgmt_compute_network_id
@@ -15,7 +15,7 @@ resource "google_compute_firewall" "allow_ssh_https" {
 }
 
 # Firewall rule - allow private IP ranges to access
-resource "google_compute_firewall" "allow_rfc1918" {
+resource "google_compute_firewall" "allow_lan_rfc1918" {
   count   = var.create_firewall_rule ? 1 : 0
   name    = var.lan_firewall_rule_name
   network = var.lan_compute_network_id

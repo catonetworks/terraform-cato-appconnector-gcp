@@ -15,7 +15,7 @@ output "cato_serial_id" {
 
 output "firewall_rule_name" {
   description = "Name of the created firewall rule"
-  value       = try(google_compute_firewall.allow_ssh_https[0].name, "No Firewall Rule Created")
+  value       = try(google_compute_firewall.allow_mgmt_ports[0].name, "No Firewall Rule Created")
 }
 
 output "boot_disk_name" {
@@ -34,7 +34,8 @@ output "vm_instance_name" {
 }
 
 output "vm_instance_id" {
-  value = google_compute_instance.app_connector.id
+  description = "ID of the VM instance"
+  value       = google_compute_instance.app_connector.id
 }
 
 output "vm_mgmt_network_ip" {
@@ -69,10 +70,10 @@ output "vm_labels" {
 
 output "firewall_rule_rfc1918" {
   description = "Firewall rule name for RFC1918 private IP ranges"
-  value       = try(google_compute_firewall.allow_rfc1918[0].name, "Firewall Disabled")
+  value       = try(google_compute_firewall.allow_lan_rfc1918[0].name, "Firewall Disabled")
 }
 
 output "firewall_rule_rfc1918_self_link" {
   description = "Self-link of the RFC1918 firewall rule"
-  value       = try(google_compute_firewall.allow_rfc1918[0].self_link, "Firewall Disabled")
+  value       = try(google_compute_firewall.allow_lan_rfc1918[0].self_link, "Firewall Disabled")
 }

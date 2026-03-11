@@ -63,7 +63,7 @@ variable "lan_subnet_id" {
   type        = string
 }
 
-# Existing IP Names (REQUIRED)
+# Existing IP Names
 variable "mgmt_static_ip_address" {
   description = "Name of existing Management Static IP"
   type        = string
@@ -73,7 +73,6 @@ variable "wan_static_ip_address" {
   description = "Name of existing WAN Static IP"
   type        = string
 }
-
 
 variable "network_tier" {
   description = "Network tier for the public IP"
