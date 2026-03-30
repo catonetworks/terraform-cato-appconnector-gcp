@@ -1,6 +1,6 @@
 # Cato Networks GCP appConnector Terraform Module
 
-The Cato appConnector modules deploys an appConnector instance to connect to the Cato Cloud.
+The Cato appConnector module deploys an appConnector instance to connect to the Cato Cloud.
 
 # Pre-reqs
 - Install the [Google Cloud Platform CLI](https://cloud.google.com/sdk/docs/install)
