@@ -2,6 +2,8 @@
 
 The Cato appConnector module deploys an appConnector instance to connect to the Cato Cloud.
 
+- *Note: This feature is currently in Early Availability (EA) and has been rolled out to a limited set of customer accounts for testing and validation purposes.*
+
 # Pre-reqs
 - Install the [Google Cloud Platform CLI](https://cloud.google.com/sdk/docs/install)
 `$ /google-cloud-sdk/install.sh`
