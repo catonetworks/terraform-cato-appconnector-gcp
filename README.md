@@ -491,14 +491,15 @@ module "app_connector_gcp" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| ---- | ------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_cato"></a> [cato](#requirement\_cato) | >= 0.0.70 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_cato"></a> [cato](#provider\_cato) | n/a |
+| ---- | ------- |
+| <a name="provider_cato"></a> [cato](#provider\_cato) | >= 0.0.70 |
 | <a name="provider_google"></a> [google](#provider\_google) | n/a |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
 
@@ -509,7 +510,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [cato_app_connector.this](https://registry.terraform.io/providers/catonetworks/cato/latest/docs/resources/app_connector) | resource |
 | [google_compute_disk.boot_disk](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk) | resource |
 | [google_compute_firewall.allow_lan_rfc1918](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall) | resource |
@@ -520,7 +521,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_app_connector_address"></a> [app\_connector\_address](#input\_app\_connector\_address) | AppConnector address (street) | `string` | `null` | no |
 | <a name="input_app_connector_city"></a> [app\_connector\_city](#input\_app\_connector\_city) | AppConnector city name (in the given country) | `string` | n/a | yes |
 | <a name="input_app_connector_country_code"></a> [app\_connector\_country\_code](#input\_app\_connector\_country\_code) | AppConnector country code | `string` | n/a | yes |
@@ -560,7 +561,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_boot_disk_name"></a> [boot\_disk\_name](#output\_boot\_disk\_name) | Boot disk name for the VM |
 | <a name="output_boot_disk_self_link"></a> [boot\_disk\_self\_link](#output\_boot\_disk\_self\_link) | Self-link for the boot disk |
 | <a name="output_cato_appconnector_id"></a> [cato\_appconnector\_id](#output\_cato\_appconnector\_id) | ID of the Cato AppConnector |
@@ -577,3 +578,4 @@ No modules.
 | <a name="output_vm_mgmt_public_ip"></a> [vm\_mgmt\_public\_ip](#output\_vm\_mgmt\_public\_ip) | Management public IP if assigned |
 | <a name="output_vm_wan_network_ip"></a> [vm\_wan\_network\_ip](#output\_vm\_wan\_network\_ip) | WAN network private IP of the VM |
 | <a name="output_vm_wan_public_ip"></a> [vm\_wan\_public\_ip](#output\_vm\_wan\_public\_ip) | WAN public IP if assigned |
+<!-- END_TF_DOCS -->
