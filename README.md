@@ -174,16 +174,12 @@ module "app_connector_gcp" {
   labels                   = { environment = "prod" }
   tags                     = ["appconnector"]
 
+  region                      = var.region
   app_connector_name          = "appcon-site1"
   app_connector_description   = "make site1 app accessible"
   app_connector_group         = "site1"
-  app_connector_address       = "123 Main St"
-  app_connector_city          = "San Francisco"
-  app_connector_country_code  = "US"
-  app_connector_state_code    = "US-CA"
-  app_connector_timezone      = "America/Los_Angeles"
-  app_connector_primary_pop   = "New York_Sta"
-  app_connector_secondary_pop = "Chicago Sta"
+  app_connector_primary_pop   = "New York"
+  app_connector_secondary_pop = "Chicago"
 }
 ```
 
@@ -472,16 +468,12 @@ module "app_connector_gcp" {
   labels                   = { environment = "prod" }
   tags                     = ["appconnector"]
 
+  region                      = var.region
   app_connector_name          = "appcon-site1"
   app_connector_description   = "make site1 app accessible"
   app_connector_group         = "site1"
-  app_connector_address       = "123 Main St"
-  app_connector_city          = "San Francisco"
-  app_connector_country_code  = "US"
-  app_connector_state_code    = "US-CA"
-  app_connector_timezone      = "America/Los_Angeles"
-  app_connector_primary_pop   = "New York_Sta"
-  app_connector_secondary_pop = "Chicago Sta"
+  app_connector_primary_pop   = "New York"
+  app_connector_secondary_pop = "Chicago"
 }
 ```
 
@@ -491,14 +483,14 @@ module "app_connector_gcp" {
 ## Requirements
 
 | Name | Version |
-| ---- | ------- |
+|------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
 | <a name="requirement_cato"></a> [cato](#requirement\_cato) | >= 0.0.70 |
 
 ## Providers
 
 | Name | Version |
-| ---- | ------- |
+|------|---------|
 | <a name="provider_cato"></a> [cato](#provider\_cato) | >= 0.0.70 |
 | <a name="provider_google"></a> [google](#provider\_google) | n/a |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
@@ -510,7 +502,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-| ---- | ---- |
+|------|------|
 | [cato_app_connector.this](https://registry.terraform.io/providers/catonetworks/cato/latest/docs/resources/app_connector) | resource |
 | [google_compute_disk.boot_disk](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk) | resource |
 | [google_compute_firewall.allow_lan_rfc1918](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall) | resource |
@@ -521,17 +513,12 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-| ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_app_connector_address"></a> [app\_connector\_address](#input\_app\_connector\_address) | AppConnector address (street) | `string` | `null` | no |
-| <a name="input_app_connector_city"></a> [app\_connector\_city](#input\_app\_connector\_city) | AppConnector city name (in the given country) | `string` | n/a | yes |
-| <a name="input_app_connector_country_code"></a> [app\_connector\_country\_code](#input\_app\_connector\_country\_code) | AppConnector country code | `string` | n/a | yes |
+|------|-------------|------|---------|:--------:|
 | <a name="input_app_connector_description"></a> [app\_connector\_description](#input\_app\_connector\_description) | AppConnector description | `string` | `null` | no |
 | <a name="input_app_connector_group"></a> [app\_connector\_group](#input\_app\_connector\_group) | AppConnector group name | `string` | n/a | yes |
 | <a name="input_app_connector_name"></a> [app\_connector\_name](#input\_app\_connector\_name) | Name of the app-connector virtual machine | `string` | `"app-connector"` | no |
 | <a name="input_app_connector_primary_pop"></a> [app\_connector\_primary\_pop](#input\_app\_connector\_primary\_pop) | Primary POP location (state) for the AppConnector | `string` | `null` | no |
 | <a name="input_app_connector_secondary_pop"></a> [app\_connector\_secondary\_pop](#input\_app\_connector\_secondary\_pop) | Secondary POP location (state) for the AppConnector | `string` | `null` | no |
-| <a name="input_app_connector_state_code"></a> [app\_connector\_state\_code](#input\_app\_connector\_state\_code) | AppConnector state code (required for the USA) | `string` | n/a | yes |
-| <a name="input_app_connector_timezone"></a> [app\_connector\_timezone](#input\_app\_connector\_timezone) | AppConnector timezone | `string` | n/a | yes |
 | <a name="input_boot_disk_image"></a> [boot\_disk\_image](#input\_boot\_disk\_image) | Boot disk image | `string` | `"projects/catonetworks-public/global/images/app-connector-image"` | no |
 | <a name="input_boot_disk_size"></a> [boot\_disk\_size](#input\_boot\_disk\_size) | Boot disk size in GB (minimum 10 GB) | `number` | `20` | no |
 | <a name="input_create_firewall_rule"></a> [create\_firewall\_rule](#input\_create\_firewall\_rule) | Whether to create the firewall rule for management access | `bool` | `true` | no |
@@ -551,6 +538,8 @@ No modules.
 | <a name="input_network_tier"></a> [network\_tier](#input\_network\_tier) | Network tier for the public IP | `string` | `"STANDARD"` | no |
 | <a name="input_public_ip_mgmt"></a> [public\_ip\_mgmt](#input\_public\_ip\_mgmt) | Whether to assign the existing static IP to management interface. If false, no public IP will be assigned. | `bool` | `true` | no |
 | <a name="input_public_ip_wan"></a> [public\_ip\_wan](#input\_public\_ip\_wan) | Whether to assign the existing static IP to WAN interface. If false, no public IP will be assigned. | `bool` | `true` | no |
+| <a name="input_region"></a> [region](#input\_region) | GCP Region | `string` | n/a | yes |
+| <a name="input_site_location"></a> [site\_location](#input\_site\_location) | Site location information. If all fields are null, location will be automatically determined from the GCP region. | <pre>object({<br/>    city_name    = optional(string)<br/>    country_code = optional(string)<br/>    state_code   = optional(string)<br/>    timezone     = optional(string)<br/>  })</pre> | <pre>{<br/>  "city_name": null,<br/>  "country_code": null,<br/>  "state_code": null,<br/>  "timezone": null<br/>}</pre> | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be appended to GCP resources | `list(string)` | `[]` | no |
 | <a name="input_wan_compute_network_id"></a> [wan\_compute\_network\_id](#input\_wan\_compute\_network\_id) | ID of existing WAN Compute Network | `string` | n/a | yes |
 | <a name="input_wan_network_ip"></a> [wan\_network\_ip](#input\_wan\_network\_ip) | WAN network IP | `string` | n/a | yes |
@@ -561,7 +550,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-| ---- | ----------- |
+|------|-------------|
 | <a name="output_boot_disk_name"></a> [boot\_disk\_name](#output\_boot\_disk\_name) | Boot disk name for the VM |
 | <a name="output_boot_disk_self_link"></a> [boot\_disk\_self\_link](#output\_boot\_disk\_self\_link) | Self-link for the boot disk |
 | <a name="output_cato_appconnector_id"></a> [cato\_appconnector\_id](#output\_cato\_appconnector\_id) | ID of the Cato AppConnector |
@@ -570,6 +559,7 @@ No modules.
 | <a name="output_firewall_rule_name"></a> [firewall\_rule\_name](#output\_firewall\_rule\_name) | Name of the created firewall rule |
 | <a name="output_firewall_rule_rfc1918"></a> [firewall\_rule\_rfc1918](#output\_firewall\_rule\_rfc1918) | Firewall rule name for RFC1918 private IP ranges |
 | <a name="output_firewall_rule_rfc1918_self_link"></a> [firewall\_rule\_rfc1918\_self\_link](#output\_firewall\_rule\_rfc1918\_self\_link) | Self-link of the RFC1918 firewall rule |
+| <a name="output_site_location"></a> [site\_location](#output\_site\_location) | The resolved site location from GCP region mapping |
 | <a name="output_vm_instance_id"></a> [vm\_instance\_id](#output\_vm\_instance\_id) | ID of the VM instance |
 | <a name="output_vm_instance_name"></a> [vm\_instance\_name](#output\_vm\_instance\_name) | Name of the VM instance |
 | <a name="output_vm_labels"></a> [vm\_labels](#output\_vm\_labels) | Labels assigned to the VM |
