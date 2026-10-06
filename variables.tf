@@ -226,3 +226,12 @@ variable "site_location" {
     error_message = "Site location must either have all fields null (for automatic lookup) or provide at minimum city_name, country_code, and timezone."
   }
 }
+
+variable "app_connector_bw_allocation" {
+  description = "Pooled bandwidth license allocations"
+  type = list(object({
+    license_id = string
+    bandwidth  = number
+  }))
+  default = null
+}

@@ -514,6 +514,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_app_connector_bw_allocation"></a> [app\_connector\_bw\_allocation](#input\_app\_connector\_bw\_allocation) | Pooled bandwidth license allocations | <pre>list(object({<br/>    license_id = string<br/>    bandwidth  = number<br/>  }))</pre> | `null` | no |
 | <a name="input_app_connector_description"></a> [app\_connector\_description](#input\_app\_connector\_description) | AppConnector description | `string` | `null` | no |
 | <a name="input_app_connector_group"></a> [app\_connector\_group](#input\_app\_connector\_group) | AppConnector group name | `string` | n/a | yes |
 | <a name="input_app_connector_name"></a> [app\_connector\_name](#input\_app\_connector\_name) | Name of the app-connector virtual machine | `string` | `"app-connector"` | no |
